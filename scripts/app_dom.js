@@ -73,5 +73,15 @@ cityForm.addEventListener('submit', (e) => {
     .then((data) => updateUI(data))
     .catch((err) => updateUI(err));
 
+  // set localStorage
+  localStorage.setItem('location', city);   // city from input field, set to store only the most recent location
+
 });
 
+// check if location is set in localStorage, if there is then display output even when page loaded or refreshed
+if (localStorage.getItem('location')) {
+  updateCity(localStorage.getItem('location'))
+  .then(data => updateUI(data))
+  .catch(err => console.log(err));
+};
+  
